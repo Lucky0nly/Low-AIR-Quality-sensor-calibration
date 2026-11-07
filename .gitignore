@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pkl
+
+# Matplotlib & Environment Caches
+.mpl_cache/
+.mplconfig/
+scratch_mpl/
+
+# OS and Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

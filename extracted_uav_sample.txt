@@ -1,0 +1,300 @@
+COMPARATIVE ANALYSIS OF CLASSICALMACHINE-LEARNING ALGORITHMS FORREAL-TIME FAULT DETECTION IN MULTIROTOR UAVs
+Research Project Report
+Submitted as part of the Machine Learning Project
+Focus: Classical machine learning (SVM, Random Forest and K-Nearest Neighbors)
+Datasets: UAV vibration recordings and UAV-FD flight telemetry
+Prepared for academic evaluation
+Abstract
+Multirotor unmanned aerial vehicles (UAVs) rely on motors, propellers and inertial sensors to maintain stable flight. Mechanical damage or propeller imbalance can alter vibration and flight-telemetry patterns, making early fault detection important. This report compares three classical machine-learning algorithms—Support Vector Machine (SVM), Random Forest and K-Nearest Neighbors (KNN)—using two separate datasets. Dataset 1 contains triaxial vibration recordings labelled Healthy, Damaged and Unbalanced. Dataset 2 contains UAV-FD telemetry recordings labelled Healthy and Fault. Evaluation includes accuracy, Macro-F1, fault precision, fault recall, false-alarm rate (FAR), inference latency and throughput. In the supplied Dataset 1 results, Random Forest achieved the highest accuracy (99.62%) and Macro-F1 (99.57%), while KNN had the lowest latency (0.0516 ms/window). In Dataset 2, KNN achieved the highest accuracy (69.59%) and Macro-F1 (69.26%) among the reported models, but its FAR remained high (42.52%). The findings show that performance depends on the dataset and that classification quality, false alarms and computational speed must be assessed together.
+Keywords
+UAV fault detection; classical machine learning; vibration analysis; flight telemetry; SVM; Random Forest; KNN; real-time classification.
+1. Introduction
+Multirotor UAVs are used in inspection, agriculture, monitoring and emergency-response applications. Their reliability depends on the condition of propulsion components and the quality of sensor measurements. A damaged or unbalanced propeller may change vibration patterns, while a fault during flight may also appear in inertial measurement unit (IMU) signals. A monitoring system that detects such changes can support maintenance and improve operational awareness.
+Classical machine-learning algorithms can classify sensor windows using features computed from raw signals. This approach is suitable for a comparative study because it allows model performance and inference cost to be measured without relying on deep neural networks. This report focuses on SVM, Random Forest and KNN and evaluates them separately on a vibration dataset and a telemetry dataset.
+2. Aim and Objectives
+Aim: To compare classical machine-learning algorithms for UAV fault detection in terms of classification performance and computational efficiency.
+Describe and analyse two UAV datasets with different sensor modalities and label structures.
+Evaluate SVM, Random Forest and KNN on each dataset using consistent, problem-specific metrics.
+Compare fault-detection performance, false alarms, inference latency and throughput.
+Interpret model behaviour using class-wise results, confusion matrices, signal plots and feature importance where available.
+Identify limitations and practical next steps for improving generalization and real-time suitability.
+3. Dataset Description and Analysis
+3.1 Dataset 1 — UAV Vibration Dataset
+Source: Scientific Data article (2025), https://www.nature.com/articles/s41597-025-05692-4
+Dataset 1 consists of five Excel recordings with time information and acceleration measurements along the X, Y and Z axes. The recordings represent three operating conditions: Healthy, Damaged and Unbalanced. The current preprocessing configuration uses 256-sample windows with a stride of 256 samples, producing non-overlapping windows.
+Table 1. Dataset 1 recording summary
+Recording
+Class
+Samples
+Windows
+Damaged Bottom Right Blade.xlsx
+Damaged
+399,999
+1,562
+Damaged Top Right Blade.xlsx
+Damaged
+400,000
+1,562
+Healthy.xlsx
+Healthy
+398,945
+1,558
+Unbalanced Bottom Right Blade.xlsx
+Unbalanced
+400,000
+1,562
+Unbalanced Top Right Blade.xlsx
+Unbalanced
+400,000
+1,562
+Total
+3 classes
+1,998,944
+7,806
+Approximate sampling rate: 1,023.54 Hz.
+Input channels: AccX, AccY and AccZ.
+Classification structure: three classes — Healthy, Damaged and Unbalanced.
+Important limitation: there is only one Healthy recording. Randomly splitting windows from the same recording may overestimate performance on unseen healthy recordings.
+3.2 Dataset 2 — UAV-FD Telemetry Dataset
+Source: UAV-FD dataset on Zenodo, https://zenodo.org/records/7648996
+Dataset 2 contains MATLAB (.mat) flight-telemetry recordings. The current feature pipeline uses six IMU channels: AccX, AccY, AccZ, GyrX, GyrY and GyrZ. The task is binary classification between Healthy and Fault. The reported setup uses 128-sample windows with a stride of 64 samples and separates the training and testing data by recording.
+Table 2. Dataset 2 recording summary
+Split
+Recording
+Samples
+Windows
+Class
+Training
+FAULT_M1_5.mat
+64,276
+1,003
+Fault
+Training
+FAULT_M3_5.mat
+63,171
+986
+Fault
+Training
+NO_FAULT1.mat
+26,162
+407
+Healthy
+Testing
+FAULT_M2_10.mat
+53,865
+840
+Fault
+Testing
+NO_FAULT2.mat
+57,456
+896
+Healthy
+Total
+5 recordings
+264,930
+4,132
+2 classes
+Input channels: three acceleration and three gyroscope signals.
+Window size: 128 samples; stride: 64 samples.
+Split: three recordings for training and two independent recordings for testing.
+Important limitation: the test set contains only two recordings; performance estimates may be sensitive to the particular flights and operating conditions.
+3.3 Dataset Comparison
+Table 3. Differences between the datasets
+Characteristic
+Dataset 1
+Dataset 2
+Signal type
+Propeller vibration
+Flight telemetry / IMU
+Input channels
+3 acceleration axes
+3 acceleration + 3 gyroscope axes
+Labels
+Healthy, Damaged, Unbalanced
+Healthy, Fault
+Window / stride
+256 / 256
+128 / 64
+Total samples
+1,998,944
+264,930
+Total windows
+7,806
+4,132
+Main evaluation caution
+Only one healthy recording
+Only two test recordings
+The datasets should be evaluated independently rather than combining their raw windows, because they differ in sensors, sampling conditions, window lengths and label definitions. A model score from one dataset is therefore not directly interchangeable with a score from the other.
+4. Classical Machine-Learning Methods
+4.1 Support Vector Machine (SVM)
+SVM learns a decision boundary that separates feature vectors belonging to different classes. A kernel such as the radial basis function can model nonlinear boundaries. Feature scaling is generally important, and scaling parameters must be fitted on the training set only.
+4.2 Random Forest (RF)
+Random Forest combines predictions from multiple decision trees. It can model nonlinear relationships and usually does not require the same feature scaling as SVM or KNN. Feature-importance values can help interpret which extracted features influence predictions, although importance is not proof of causality.
+4.3 K-Nearest Neighbors (KNN)
+KNN predicts a class using the labels of nearby training examples in feature space. Its performance depends on K, the distance metric and feature scaling. Prediction time can grow with the number of stored training examples, so measured latency should include a clearly specified implementation and batch size.
+5. Experimental Methodology
+5.1 Preprocessing and windowing
+Sensor recordings are loaded, required channels are selected, and windows are created according to the dataset-specific configuration. Invalid or missing values should be checked before feature extraction. The same split and preprocessing rules should be applied to all three algorithms within each dataset.
+5.2 Feature extraction
+The current Dataset 2 pipeline extracts eight statistical features from each of six IMU channels, producing 48 features per window. The listed features are mean, standard deviation, root mean square (RMS), minimum, maximum, peak-to-peak amplitude, skewness and kurtosis. The Dataset 1 experiment uses windowed triaxial vibration measurements; its exact feature list should be reported from the implemented script to ensure reproducibility. Frequency-domain features such as dominant frequency and spectral energy can be tested as a future extension.
+5.3 Training and evaluation protocol
+Train SVM, Random Forest and KNN separately on each dataset.
+Fit feature scaling only on training data and reuse the fitted transform for testing.
+Use a recording-level split where possible to reduce leakage between correlated windows.
+Keep the test set untouched during feature selection and hyperparameter tuning.
+Report confusion matrices and class-wise metrics alongside aggregate scores.
+Measure inference latency and throughput using the same timing procedure and hardware for all models.
+6. Evaluation Metrics
+Table 4. Metrics used in the comparison
+Metric
+Interpretation
+Accuracy
+Fraction of all windows classified correctly.
+Macro-F1
+Average F1 across classes, giving each class equal weight.
+Fault precision
+Of windows predicted as faulty, the proportion that are actually faulty.
+Fault recall
+Of actual faulty windows, the proportion detected as faulty.
+False-alarm rate (FAR)
+Of actual healthy windows, the proportion incorrectly flagged as faulty.
+Latency (ms/window)
+Average prediction time for one window under the reported timing setup.
+Throughput (windows/s)
+Number of windows processed per second.
+For binary fault detection, the usual definitions are:
+Precision = TP / (TP + FP)
+Recall = TP / (TP + FN)
+FAR = FP / (FP + TN)
+TP = faulty windows correctly detected; FP = healthy windows incorrectly flagged as faulty; FN = faulty windows missed; TN = healthy windows correctly classified. Dataset 1 has three classes, so the exact procedure used to derive fault precision, fault recall and FAR should be stated. If Damaged and Unbalanced are combined as a single fault category for these metrics, this binary aggregation should be explicitly documented.
+7. Quantitative Results
+7.1 Dataset 1 — UAV Vibration Dataset
+The following values are the supplied results. The model order is SVM, Random Forest and KNN.
+Table 5. Dataset 1 classification and computational performance
+Model
+Accuracy
+Macro-F1
+Fault precision
+Fault recall
+FAR
+Latency (ms/window)
+Throughput (windows/s)
+SVM
+96.16%
+95.35%
+98.38%
+97.07%
+6.41%
+0.0836
+11,962.0
+Random Forest
+99.62%
+99.57%
+99.68%
+100.00%
+1.28%
+0.2131
+4,692.8
+KNN
+99.10%
+98.87%
+99.05%
+99.84%
+3.85%
+0.0516
+19,391.6
+Dataset 1 interpretation
+Random Forest achieved the highest accuracy (99.62%) and Macro-F1 (99.57%), along with 100.00% fault recall and the lowest FAR (1.28%). These results make Random Forest the strongest classifier by the supplied aggregate classification metrics. KNN was the fastest model, with latency of 0.0516 ms/window and throughput of 19,391.6 windows/s. SVM had intermediate latency and lower classification scores than Random Forest and KNN.
+7.2 Dataset 2 — UAV-FD Telemetry Dataset
+The following values are the supplied results. The model order is SVM, Random Forest and KNN.
+Table 6. Dataset 2 classification and computational performance
+Model
+Accuracy
+Macro-F1
+Fault precision
+Fault recall
+FAR
+Latency (ms/window)
+Throughput (windows/s)
+SVM
+44.64%
+44.57%
+42.75%
+42.50%
+53.35%
+0.0838
+11,940.3
+Random Forest
+48.44%
+48.24%
+46.51%
+43.57%
+46.99%
+0.2180
+4,587.8
+KNN
+69.59%
+69.26%
+64.53%
+82.50%
+42.52%
+0.0435
+22,987.5
+Dataset 2 interpretation
+KNN achieved the highest accuracy (69.59%), Macro-F1 (69.26%) and fault recall (82.50%), and it also had the lowest FAR (42.52%) and latency (0.0435 ms/window) among the three supplied results. Despite being the best of these models on Dataset 2, its FAR remains high: a substantial proportion of healthy windows are still incorrectly flagged as faults. Random Forest had lower accuracy and recall than KNN, while SVM had the lowest accuracy and Macro-F1 in this comparison.
+7.3 Cross-Dataset Summary
+Table 7. Best supplied model by dataset and metric
+Measure
+Dataset 1
+Dataset 2
+Highest accuracy
+Random Forest — 99.62%
+KNN — 69.59%
+Highest Macro-F1
+Random Forest — 99.57%
+KNN — 69.26%
+Highest fault recall
+Random Forest — 100.00%
+KNN — 82.50%
+Lowest FAR
+Random Forest — 1.28%
+KNN — 42.52%
+Lowest latency
+KNN — 0.0516 ms/window
+KNN — 0.0435 ms/window
+Highest throughput
+KNN — 19,391.6 windows/s
+KNN — 22,987.5 windows/s
+The best-performing algorithm differs by dataset. Random Forest performs best on the supplied Dataset 1 classification metrics, whereas KNN performs best on the supplied Dataset 2 metrics. Dataset 2 remains much more challenging, particularly because of its high FAR and lower overall classification scores. This difference may reflect the sensor modality, class definition, operating conditions, recording split or feature representation; further experiments are needed to determine the causes.
+8. Qualitative Analysis
+8.1 Signal visualization
+Plot AccX, AccY and AccZ over time for representative Healthy, Damaged and Unbalanced recordings in Dataset 1. For Dataset 2, plot acceleration and gyroscope signals from healthy and faulty recordings. Use the plots to inspect amplitude changes, variability, transient events and overlap between classes. These patterns should be described only after they are observed in the actual signals.
+8.2 Confusion matrices and error inspection
+A confusion matrix should be generated for each model and dataset. For Dataset 1, examine confusion among Healthy, Damaged and Unbalanced. For Dataset 2, separately count missed faults (FN) and healthy windows incorrectly flagged as faults (FP). Inspect misclassified windows to determine whether errors cluster around transitions, noisy segments or signals with similar feature values.
+8.3 Feature importance and model behaviour
+Random Forest feature importance can be reported to show which features contributed most to its decisions. SVM and KNN can be examined using class-wise error patterns and feature-space visualizations if available. No specific feature should be claimed as important until the corresponding analysis has been run.
+9. Real-Time Performance
+The supplied inference measurements show that KNN has the lowest latency on both datasets. Dataset 1 KNN latency is 0.0516 ms/window, while Dataset 2 KNN latency is 0.0435 ms/window. Random Forest has the highest reported latency in both datasets (0.2131 and 0.2180 ms/window, respectively). The throughput values show the same general ordering as latency. These values are useful for model-level comparison but do not, by themselves, prove real-time deployment readiness.
+A complete real-time assessment should document hardware, software versions, whether feature extraction is included, number of timed repetitions, batch size, warm-up procedure and whether the measurement covers one-window or batch inference. End-to-end time also includes sensor acquisition, window buffering, feature calculation and decision logic.
+10. Limitations and Threats to Validity
+Dataset 1 has only one healthy recording; a window-level random split could leak recording-specific characteristics across train and test sets.
+Dataset 2 has only five recordings and two test recordings, so generalization to other flights and fault conditions remains uncertain.
+The Dataset 1 task is three-class, while Dataset 2 is binary; direct score comparisons across datasets should be made cautiously.
+The supplied Dataset 1 fault precision/recall/FAR require a clearly documented definition because the dataset has three classes.
+Dataset 2 has a high FAR for all models, including 42.52% for KNN, so further work is required to reduce false alarms.
+Hyperparameter tuning, repeated trials and uncertainty estimates are not documented in the supplied result values.
+Latency depends on hardware and measurement procedure; the values do not include all end-to-end system components unless explicitly measured.
+11. Proposed Improvements and Research Contributions
+The following are proposed next steps, not claims of completed contributions:
+Compare statistical features with additional frequency-domain features such as spectral energy and dominant frequency.
+Tune SVM kernel and regularization settings, Random Forest tree count/depth, and KNN neighbour count and distance metric using training-only validation.
+Use recording-level validation wherever possible and seek additional independent healthy and faulty recordings.
+Choose thresholds and model settings that reduce FAR while preserving an acceptable fault recall.
+Report class-wise precision, recall and F1, confusion matrices, and confidence intervals or variation across repeated runs.
+Standardize latency measurement and include preprocessing and feature extraction for an end-to-end timing result.
+12. Conclusion
+This report compares SVM, Random Forest and KNN for UAV fault detection using vibration and flight-telemetry datasets. On Dataset 1, Random Forest achieved the best supplied classification results, with 99.62% accuracy, 99.57% Macro-F1, 100.00% fault recall and 1.28% FAR. KNN was fastest on that dataset. On Dataset 2, KNN achieved the highest supplied accuracy (69.59%), Macro-F1 (69.26%) and fault recall (82.50%), and the lowest latency; however, the 42.52% FAR remains a major limitation. The results therefore do not support a single universally best algorithm. More rigorous recording-level validation, improved features, parameter tuning and transparent end-to-end timing are needed before drawing conclusions about deployment on an actual UAV.
+References
+[1] Multiaxial UAV Vibration Dataset, Scientific Data (2025). Available: https://www.nature.com/articles/s41597-025-05692-4
+[2] UAV-FD Dataset, Zenodo record 7648996. Available: https://zenodo.org/records/7648996
+Note: The above references identify the two datasets used in this report. A full literature review of recent peer-reviewed methodology papers should be added after the exact papers and their methods have been verified; the current numerical tables report the supplied SVM, Random Forest and KNN experiments and do not claim that these generic algorithms alone constitute three recent published methodologies.

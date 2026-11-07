@@ -1,0 +1,31 @@
+Dataset,Stratum_Type,Bracket,Model,Sample_Count,RMSE,MAE,MBE
+Dataset 1 (PurpleAir India),PM2.5_Concentration,Low (<30 ug/m3),Raw Sensor Baseline,578,27.093195899655203,24.62194636678201,24.62194636678201
+Dataset 1 (PurpleAir India),PM2.5_Concentration,Low (<30 ug/m3),US EPA Linear Standard,578,4.853492721618901,3.473679079584776,1.7092355916955027
+Dataset 1 (PurpleAir India),PM2.5_Concentration,Low (<30 ug/m3),Multiple Linear Regression (MLR),578,1.357693568794027,1.0854075978144206,-0.6510425454227801
+Dataset 1 (PurpleAir India),PM2.5_Concentration,Low (<30 ug/m3),Random Forest Regressor,578,0.895344903687176,0.7220572658353074,-0.199945009653171
+Dataset 1 (PurpleAir India),PM2.5_Concentration,Low (<30 ug/m3),Gradient Boosted Decision Trees (GBDT/XGB),578,1.2063405426218634,0.949740497406886,-0.445712780296889
+Dataset 1 (PurpleAir India),PM2.5_Concentration,Low (<30 ug/m3),Support Vector Regression (SVR - RBF),578,15.523518817869824,14.419876409506598,14.419876409506598
+Dataset 1 (PurpleAir India),PM2.5_Concentration,Moderate (30-60 ug/m3),Raw Sensor Baseline,2216,39.48382095083069,35.861101083032494,35.861101083032494
+Dataset 1 (PurpleAir India),PM2.5_Concentration,Moderate (30-60 ug/m3),US EPA Linear Standard,2216,8.20050269400021,6.47035443501805,-1.455954212996388
+Dataset 1 (PurpleAir India),PM2.5_Concentration,Moderate (30-60 ug/m3),Multiple Linear Regression (MLR),2216,2.7758465071287386,2.1940450523400026,-1.6677092062076075
+Dataset 1 (PurpleAir India),PM2.5_Concentration,Moderate (30-60 ug/m3),Random Forest Regressor,2216,1.3768099617218845,1.101747776453587,-0.20126096054022607
+Dataset 1 (PurpleAir India),PM2.5_Concentration,Moderate (30-60 ug/m3),Gradient Boosted Decision Trees (GBDT/XGB),2216,1.9207247483334617,1.547199740158189,-1.1159177456596605
+Dataset 1 (PurpleAir India),PM2.5_Concentration,Moderate (30-60 ug/m3),Support Vector Regression (SVR - RBF),2216,8.305452792094023,6.768602515021057,5.773442635267179
+Dataset 1 (PurpleAir India),PM2.5_Concentration,High (>60 ug/m3),Raw Sensor Baseline,2373,80.44305482052498,68.5651201011378,68.5651201011378
+Dataset 1 (PurpleAir India),PM2.5_Concentration,High (>60 ug/m3),US EPA Linear Standard,2373,30.503735786113534,24.08449731900548,-20.36461158617783
+Dataset 1 (PurpleAir India),PM2.5_Concentration,High (>60 ug/m3),Multiple Linear Regression (MLR),2373,10.373482338903827,6.728812646122405,-3.0757407507724164
+Dataset 1 (PurpleAir India),PM2.5_Concentration,High (>60 ug/m3),Random Forest Regressor,2373,3.189010154920771,2.3524234500290393,-0.26434337227401705
+Dataset 1 (PurpleAir India),PM2.5_Concentration,High (>60 ug/m3),Gradient Boosted Decision Trees (GBDT/XGB),2373,3.514947027296577,2.6416796300903624,-0.9640924530272418
+Dataset 1 (PurpleAir India),PM2.5_Concentration,High (>60 ug/m3),Support Vector Regression (SVR - RBF),2373,65.77444889740548,53.07239463090211,-53.05185456621253
+Dataset 2 (Q-SCALE Italy),PM2.5_Concentration,Low (<30 ug/m3),Raw Sensor Baseline,1003,6.674909620711429,4.934825523429711,4.895722831505483
+Dataset 2 (Q-SCALE Italy),PM2.5_Concentration,Low (<30 ug/m3),US EPA Linear Standard,1003,3.555601529521888,2.7319984366899295,-2.5844329531405776
+Dataset 2 (Q-SCALE Italy),PM2.5_Concentration,Low (<30 ug/m3),Multiple Linear Regression (MLR),1003,1.3735969237816528,1.0581933553900655,-0.7749915045340952
+Dataset 2 (Q-SCALE Italy),PM2.5_Concentration,Low (<30 ug/m3),Random Forest Regressor,1003,0.778309033340116,0.5818739540298574,0.0191270644324531
+Dataset 2 (Q-SCALE Italy),PM2.5_Concentration,Low (<30 ug/m3),Gradient Boosted Decision Trees (GBDT/XGB),1003,0.7390322202781893,0.5879366122527258,0.1263745768549658
+Dataset 2 (Q-SCALE Italy),PM2.5_Concentration,Low (<30 ug/m3),Support Vector Regression (SVR - RBF),1003,4.0851803821937995,3.0529578074388906,2.7793183694535175
+Dataset 2 (Q-SCALE Italy),PM2.5_Concentration,Moderate (30-60 ug/m3),Raw Sensor Baseline,97,16.047513729771865,14.697731958762887,14.697731958762887
+Dataset 2 (Q-SCALE Italy),PM2.5_Concentration,Moderate (30-60 ug/m3),US EPA Linear Standard,97,9.187763364390802,8.72698606185567,-8.72698606185567
+Dataset 2 (Q-SCALE Italy),PM2.5_Concentration,Moderate (30-60 ug/m3),Multiple Linear Regression (MLR),97,1.8076388025539398,1.4337354052704194,0.13990541330664963
+Dataset 2 (Q-SCALE Italy),PM2.5_Concentration,Moderate (30-60 ug/m3),Random Forest Regressor,97,1.2043950940572543,0.8746498449222375,-0.09434191389913253
+Dataset 2 (Q-SCALE Italy),PM2.5_Concentration,Moderate (30-60 ug/m3),Gradient Boosted Decision Trees (GBDT/XGB),97,1.4442024446089574,0.9417805816772775,-0.23584867043112517
+Dataset 2 (Q-SCALE Italy),PM2.5_Concentration,Moderate (30-60 ug/m3),Support Vector Regression (SVR - RBF),97,2.7795666459330617,2.125632890432772,-2.0291535895000186

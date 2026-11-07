@@ -1,0 +1,43 @@
+Dataset,Stratum_Type,Bracket,Model,Sample_Count,RMSE,MAE,MBE
+Dataset 1 (PurpleAir India),Relative_Humidity,<50% (Dry),Raw Sensor Baseline,1819,37.29401304944334,33.27188290269378,33.27188290269378
+Dataset 1 (PurpleAir India),Relative_Humidity,<50% (Dry),US EPA Linear Standard,1819,34.391859690159336,29.823574484881803,-29.823574484881803
+Dataset 1 (PurpleAir India),Relative_Humidity,<50% (Dry),Multiple Linear Regression (MLR),1819,11.855575628813057,8.483808225902193,-5.005864905676301
+Dataset 1 (PurpleAir India),Relative_Humidity,<50% (Dry),Random Forest Regressor,1819,2.9554161480306855,2.179922912548408,-0.09148248919927221
+Dataset 1 (PurpleAir India),Relative_Humidity,<50% (Dry),Gradient Boosted Decision Trees (GBDT/XGB),1819,3.001201633618039,2.2104781677768743,-0.5847586938772439
+Dataset 1 (PurpleAir India),Relative_Humidity,<50% (Dry),Support Vector Regression (SVR - RBF),1819,61.009284887674276,44.58618377010301,-40.34669303132918
+Dataset 1 (PurpleAir India),Relative_Humidity,50-70% (Moderate),Raw Sensor Baseline,2502,73.20368322011132,59.78742605915267,59.78742605915267
+Dataset 1 (PurpleAir India),Relative_Humidity,50-70% (Moderate),US EPA Linear Standard,2502,6.435667249108886,4.569451905675458,-1.6501790615507566
+Dataset 1 (PurpleAir India),Relative_Humidity,50-70% (Moderate),Multiple Linear Regression (MLR),2502,2.323039925199202,1.783221070251434,-0.45294716356236353
+Dataset 1 (PurpleAir India),Relative_Humidity,50-70% (Moderate),Random Forest Regressor,2502,2.0863169888824125,1.432548750802616,-0.22828318036954248
+Dataset 1 (PurpleAir India),Relative_Humidity,50-70% (Moderate),Gradient Boosted Decision Trees (GBDT/XGB),2502,2.57631944006563,1.8602638018694835,-1.0556398295064406
+Dataset 1 (PurpleAir India),Relative_Humidity,50-70% (Moderate),Support Vector Regression (SVR - RBF),2502,38.06816873701885,23.98786798723392,-14.11428052232386
+Dataset 1 (PurpleAir India),Relative_Humidity,70-85% (Deliquescence),Raw Sensor Baseline,838,62.25676768523535,54.53046539379475,54.53046539379475
+Dataset 1 (PurpleAir India),Relative_Humidity,70-85% (Deliquescence),US EPA Linear Standard,838,11.495510120054963,9.106662668257758,9.103556372315039
+Dataset 1 (PurpleAir India),Relative_Humidity,70-85% (Deliquescence),Multiple Linear Regression (MLR),838,2.258855827613222,1.8428569170576823,-1.3730291011053426
+Dataset 1 (PurpleAir India),Relative_Humidity,70-85% (Deliquescence),Random Forest Regressor,838,1.5366458604740594,1.04434044029027,-0.5188892405834421
+Dataset 1 (PurpleAir India),Relative_Humidity,70-85% (Deliquescence),Gradient Boosted Decision Trees (GBDT/XGB),838,2.5095860298830224,1.851577409323271,-1.5442289546197567
+Dataset 1 (PurpleAir India),Relative_Humidity,70-85% (Deliquescence),Support Vector Regression (SVR - RBF),838,13.864728263431488,9.635305249459364,4.60709622133415
+Dataset 1 (PurpleAir India),Relative_Humidity,>85% (Severe Wet),Raw Sensor Baseline,8,78.44155846074197,74.81125,74.81125
+Dataset 1 (PurpleAir India),Relative_Humidity,>85% (Severe Wet),US EPA Linear Standard,8,24.449393902846232,23.171262750000004,23.171262750000004
+Dataset 1 (PurpleAir India),Relative_Humidity,>85% (Severe Wet),Multiple Linear Regression (MLR),8,2.5014084376901073,2.357682448891631,2.357682448891631
+Dataset 1 (PurpleAir India),Relative_Humidity,>85% (Severe Wet),Random Forest Regressor,8,2.2257221672062095,2.056122224490035,-2.056122224490035
+Dataset 1 (PurpleAir India),Relative_Humidity,>85% (Severe Wet),Gradient Boosted Decision Trees (GBDT/XGB),8,2.8667407844378157,2.423588177459286,-2.417040108484672
+Dataset 1 (PurpleAir India),Relative_Humidity,>85% (Severe Wet),Support Vector Regression (SVR - RBF),8,10.57183861180499,10.050552023573832,10.050552023573832
+Dataset 2 (Q-SCALE Italy),Relative_Humidity,<50% (Dry),Raw Sensor Baseline,279,2.4529117362153663,1.9264157706093188,1.840322580645161
+Dataset 2 (Q-SCALE Italy),Relative_Humidity,<50% (Dry),US EPA Linear Standard,279,4.4784075788392155,3.350219182795698,-3.000611039426523
+Dataset 2 (Q-SCALE Italy),Relative_Humidity,<50% (Dry),Multiple Linear Regression (MLR),279,1.6867464772633796,1.536399649017038,-1.4546510181096535
+Dataset 2 (Q-SCALE Italy),Relative_Humidity,<50% (Dry),Random Forest Regressor,279,0.9393649453570541,0.710983016341222,-0.2891819239365925
+Dataset 2 (Q-SCALE Italy),Relative_Humidity,<50% (Dry),Gradient Boosted Decision Trees (GBDT/XGB),279,0.833453927536251,0.6902767965267491,0.009767475298849805
+Dataset 2 (Q-SCALE Italy),Relative_Humidity,<50% (Dry),Support Vector Regression (SVR - RBF),279,5.909999319082357,4.900757325665932,4.519598299228801
+Dataset 2 (Q-SCALE Italy),Relative_Humidity,50-70% (Moderate),Raw Sensor Baseline,701,8.831182368498434,6.838202567760343,6.817917261055635
+Dataset 2 (Q-SCALE Italy),Relative_Humidity,50-70% (Moderate),US EPA Linear Standard,701,4.599765728031179,3.4989345877318105,-3.4269409957203987
+Dataset 2 (Q-SCALE Italy),Relative_Humidity,50-70% (Moderate),Multiple Linear Regression (MLR),701,1.3997491383078209,1.0239899651565068,-0.4676512700317597
+Dataset 2 (Q-SCALE Italy),Relative_Humidity,50-70% (Moderate),Random Forest Regressor,701,0.8123358162917558,0.591032055643203,0.09978477494368544
+Dataset 2 (Q-SCALE Italy),Relative_Humidity,50-70% (Moderate),Gradient Boosted Decision Trees (GBDT/XGB),701,0.8585506748987164,0.6212948025866412,0.13489263559740158
+Dataset 2 (Q-SCALE Italy),Relative_Humidity,50-70% (Moderate),Support Vector Regression (SVR - RBF),701,3.158812050635171,2.403488999138935,1.6106162177113672
+Dataset 2 (Q-SCALE Italy),Relative_Humidity,70-85% (Deliquescence),Raw Sensor Baseline,120,10.534967805677748,8.702166666666665,8.693999999999997
+Dataset 2 (Q-SCALE Italy),Relative_Humidity,70-85% (Deliquescence),US EPA Linear Standard,120,1.9174050160431326,1.660398183333333,-1.660398183333333
+Dataset 2 (Q-SCALE Italy),Relative_Humidity,70-85% (Deliquescence),Multiple Linear Regression (MLR),120,0.5925058042884742,0.4497316843083471,-0.2506206634341291
+Dataset 2 (Q-SCALE Italy),Relative_Humidity,70-85% (Deliquescence),Random Forest Regressor,120,0.5738274989532125,0.4648573190359812,0.17304924600266994
+Dataset 2 (Q-SCALE Italy),Relative_Humidity,70-85% (Deliquescence),Gradient Boosted Decision Trees (GBDT/XGB),120,0.5744734102782163,0.4411521305665112,0.05492930326294963
+Dataset 2 (Q-SCALE Italy),Relative_Humidity,70-85% (Deliquescence),Support Vector Regression (SVR - RBF),120,2.4976734259201097,1.8012165747999853,1.673487768998941
